@@ -63,7 +63,7 @@ public class BasketProcessor {
 				totalNumberOfItems += currentItemCount;
 				// check for an offer
 				if (Offer.THREE_FORTHEPRICEOF_TWO == fruitOfferMap.get(Fruit.ORANGE)) {
-
+					int lessThanTree=0;
 					while (currentItemCount > 0) {
 						// check if more than 3 or more bought
 						if (currentItemCount >= 3) {
@@ -71,12 +71,19 @@ public class BasketProcessor {
 							basketPriceGrandTotal += Fruit.ORANGE.getPrice() * 2;
 							currentItemCount -= 3;
 						} else {
-							// now handling less than 3 limes
+							// now handling less than 3 oranges
 							// assumption is that after less than 3 customer
 							// shall pay normal price on the rest
+							lessThanTree++;
+							
 							basketPriceGrandTotal += currentItemCount * Fruit.ORANGE.getPrice();
 							currentItemCount -= currentItemCount;
 						}
+					}
+					
+					if(lessThanTree==2){
+						System.out.println("Notify customer that they need to pickup another 1 free Orange from the fruit isle");
+						
 					}
 
 				}
